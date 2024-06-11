@@ -5,13 +5,21 @@ import App from './App';
 const root = document.createElement("div");
 root.className = "container";
 
-const referenceElement = document.getElementById('contents');
+const observer = new MutationObserver((mutations, obs) => {
+  const referenceElement = document.getElementById('contents');
+  if (referenceElement && referenceElement.parentNode) {
+      referenceElement.parentNode.insertBefore(root, referenceElement.nextSibling);
+      const rootDiv = ReactDOM.createRoot(root);
+      rootDiv.render(
+          <React.StrictMode>
+              <App />
+          </React.StrictMode>
+      );
+      obs.disconnect();
+  }
+});
 
-if (referenceElement && referenceElement.parentNode) {
-  referenceElement.parentNode.insertBefore(root, referenceElement.nextSibling);
-
-  const rootDiv = ReactDOM.createRoot(root);
-  rootDiv.render(<App />);
-} else {
-  console.error('The reference element or its parent was not found.');
-}
+observer.observe(document.body, {
+  childList: true,
+  subtree: true
+});

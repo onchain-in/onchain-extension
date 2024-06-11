@@ -1,8 +1,11 @@
 import React from 'react'
+import { Container } from './styles';
 
 const App = () => {
   return (
-    <div>Pop up</div>
+    <Container>
+      hello
+    </Container>
   )
 }
 
