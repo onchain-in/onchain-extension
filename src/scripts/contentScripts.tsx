@@ -11,9 +11,9 @@ const observer = new MutationObserver((mutations, obs) => {
       referenceElement.parentNode.insertBefore(root, referenceElement.nextSibling);
       const rootDiv = ReactDOM.createRoot(root);
       rootDiv.render(
-          <React.StrictMode>
-              <App />
-          </React.StrictMode>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
       );
       obs.disconnect();
   }

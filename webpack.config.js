@@ -9,7 +9,7 @@ module.exports = {
   entry: {
     popup: './src/popup/popup.tsx',
     contentScripts: './src/scripts/contentScripts.tsx',
-    background: './src/background.ts'
+    background: './src/background.ts',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -52,8 +52,13 @@ module.exports = {
       zlib: require.resolve('browserify-zlib'),
       url: require.resolve('url/'),
       vm: false,
-      buffer: require.resolve("buffer/"),
-      process: require.resolve("process/browser")
+      buffer: require.resolve("buffer"),
+      process: require.resolve("process/browser"),
+    },
+    alias: {
+      '@hooks': path.resolve(__dirname, './src/hooks'),
+      '@styles': path.resolve(__dirname, './src/styles'),
+      '@utils': path.resolve(__dirname, './src/utils'),
     },
   },
   plugins: [
@@ -64,6 +69,9 @@ module.exports = {
     }),
     new webpack.ProvidePlugin({
       process: "process/browser"
+    }),
+    new webpack.ProvidePlugin({
+      Buffer: ['buffer', 'Buffer']
     }),
     new CopyPlugin({
       patterns: [
