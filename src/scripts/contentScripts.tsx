@@ -8,9 +8,8 @@ root.className = "container";
 let selectedElement:Element | null = null ;
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  console.log("addListener");
   if (message.type === "URL_SELECTOR") {
-    selectedElement = document.querySelector(message.selector);
+    selectedElement = document.querySelector(message.urlSelector);
   }
 });
 
