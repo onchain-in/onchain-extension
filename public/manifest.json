@@ -5,9 +5,11 @@
   "version": "1.0",
   "permissions": [
     "storage",
+    "tabs",
     "activeTab",
     "scripting",
-    "webRequest"
+    "webRequest",
+    "<all_urls>"
   ],
   "background": {
     "service_worker": "background.js"

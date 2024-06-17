@@ -5,10 +5,19 @@ import App from './App';
 const root = document.createElement("div");
 root.className = "container";
 
+let selectedElement:Element | null = null ;
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  console.log("addListener");
+  if (message.type === "URL_SELECTOR") {
+    selectedElement = document.querySelector(message.selector);
+  }
+});
+
 const observer = new MutationObserver((mutations, obs) => {
-  const referenceElement = document.getElementById('contents');
-  if (referenceElement && referenceElement.parentNode) {
-      referenceElement.parentNode.insertBefore(root, referenceElement.nextSibling);
+  const hostname = window.location.hostname;
+  if (selectedElement && selectedElement.parentNode) {
+      selectedElement.parentNode.insertBefore(root, selectedElement.nextSibling);
       const rootDiv = ReactDOM.createRoot(root);
       rootDiv.render(
         <React.StrictMode>

@@ -1,7 +1,6 @@
 export enum EColor {
-  COLOR_PRIMARY = "#F16622",
-  COLOR_PRIMARY_SUB1 = "#FF8A51",
-  COLOR_PRIMARY_SUB2= "#FFC1A3",
+  COLOR_PRIMARY = "#9945FF",
+  COLOR_SUB= "#14F195",
   TEXT_900 = "#1A1A1A",
   TEXT_800 = "#262729",
   TEXT_700 = "#858585",
@@ -11,5 +10,6 @@ export enum EColor {
   TEXT_300 = "#F7F7F7",
   TEXT_200 = "#FFFFFF",
   GRAY = "#A5A5A5",
-  RED = "#fa4a4a"
+  RED = "#fa4a4a",
+  YELLOW = "#F2B705"
 }
